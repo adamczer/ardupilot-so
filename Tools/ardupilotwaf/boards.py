@@ -75,7 +75,7 @@ class Board:
             '-ffunction-sections',
             '-fdata-sections',
             '-fsigned-char',
-
+	    '-fPIC',
             '-Wall',
             '-Wextra',
             '-Wformat',
@@ -143,6 +143,7 @@ class Board:
             '-ffunction-sections',
             '-fno-exceptions',
             '-fsigned-char',
+	    '-fPIC',
 
             '-Wall',
             '-Wextra',
