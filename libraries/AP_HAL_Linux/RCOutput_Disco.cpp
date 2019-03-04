@@ -28,7 +28,7 @@
 
 namespace Linux {
 
-RCOutput_Disco::RCOutput_Disco(AP_HAL::OwnPtr<AP_HAL::I2CDevice> dev)
+/*RCOutput_Disco::RCOutput_Disco(AP_HAL::OwnPtr<AP_HAL::I2CDevice> dev)
     : bebop_out(std::move(dev))
 {
 }
@@ -112,6 +112,6 @@ void RCOutput_Disco::set_esc_scaling(uint16_t min_pwm, uint16_t max_pwm)
 {
     sysfs_out.set_esc_scaling(min_pwm, max_pwm);
     bebop_out.set_esc_scaling(min_pwm, max_pwm);
-}
+}*/
     
 }

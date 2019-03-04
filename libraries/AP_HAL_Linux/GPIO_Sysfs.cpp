@@ -84,10 +84,10 @@ void GPIO_Sysfs::init()
 
 void GPIO_Sysfs::pinMode(uint8_t vpin, uint8_t output)
 {
-    assert_vpin(vpin, n_pins);
+    /*assert_vpin(vpin, n_pins);
 
     _export_pin(vpin);
-    _pinMode(pin_table[vpin], output);
+    _pinMode(pin_table[vpin], output);*/
 }
 
 void GPIO_Sysfs::_pinMode(unsigned int pin, uint8_t output)
@@ -121,7 +121,7 @@ int GPIO_Sysfs::_open_pin_value(unsigned int pin, int flags)
 
 uint8_t GPIO_Sysfs::read(uint8_t vpin)
 {
-    assert_vpin(vpin, n_pins, LOW);
+    /*assert_vpin(vpin, n_pins, LOW);
 
     const unsigned pin = pin_table[vpin];
     int fd = _open_pin_value(pin, O_RDONLY);
@@ -141,12 +141,13 @@ uint8_t GPIO_Sysfs::read(uint8_t vpin)
 
 error:
     hal.console->printf("GPIO_Sysfs: Unable to read pin %u value.\n", vpin);
+    return LOW;*/
     return LOW;
 }
 
 void GPIO_Sysfs::write(uint8_t vpin, uint8_t value)
 {
-    assert_vpin(vpin, n_pins);
+    /*assert_vpin(vpin, n_pins);
 
     const unsigned pin = pin_table[vpin];
     int fd = _open_pin_value(pin, O_WRONLY);
@@ -163,7 +164,7 @@ void GPIO_Sysfs::write(uint8_t vpin, uint8_t value)
     return;
 
 error:
-    hal.console->printf("GPIO_Sysfs: Unable to write pin %u value.\n", vpin);
+    hal.console->printf("GPIO_Sysfs: Unable to write pin %u value.\n", vpin);*/
 }
 
 void GPIO_Sysfs::toggle(uint8_t vpin)
@@ -173,7 +174,7 @@ void GPIO_Sysfs::toggle(uint8_t vpin)
 
 AP_HAL::DigitalSource* GPIO_Sysfs::channel(uint16_t vpin)
 {
-    assert_vpin(vpin, n_pins, nullptr);
+    /*assert_vpin(vpin, n_pins, nullptr);
 
     const unsigned pin = pin_table[vpin];
     int value_fd = -1;
@@ -182,10 +183,11 @@ AP_HAL::DigitalSource* GPIO_Sysfs::channel(uint16_t vpin)
         value_fd = _open_pin_value(pin, O_RDWR);
     }
 
-    /* Even if we couldn't open the fd, return a new DigitalSource and let
+    *//* Even if we couldn't open the fd, return a new DigitalSource and let
      * reads and writes fail later due to invalid. Otherwise we
-     * could crash in undesired places */
-    return new DigitalSource_Sysfs(pin, value_fd);
+     * could crash in undesired places *//*
+    return new DigitalSource_Sysfs(pin, value_fd);*/
+    return nullptr;
 }
 
 bool GPIO_Sysfs::usb_connected(void)
@@ -195,7 +197,7 @@ bool GPIO_Sysfs::usb_connected(void)
 
 bool GPIO_Sysfs::_export_pin(uint8_t vpin)
 {
-    assert_vpin(vpin, n_pins, false);
+    /*assert_vpin(vpin, n_pins, false);
 
     const unsigned int pin = pin_table[vpin];
     char gpio_path[GPIO_PATH_MAX];
@@ -229,5 +231,6 @@ fail_export:
 fail_open:
 fail_snprintf:
     hal.console->printf("GPIO_Sysfs: Unable to export pin %u.\n", pin);
+    return false;*/
     return false;
 }
