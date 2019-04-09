@@ -417,7 +417,7 @@ void AP_InertialSensor_Backend::_publish_temperature(uint8_t instance, float tem
 
     /* give the temperature to the control loop in order to keep it constant*/
     if (instance == 0) {
-        hal.util->set_imu_temp(temperature);
+//        hal.util->set_imu_temp(temperature);
     }
 }
 
